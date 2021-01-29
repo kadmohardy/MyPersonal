@@ -16,6 +16,7 @@ defmodule MyPersonalWeb.ChannelCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -29,10 +30,10 @@ defmodule MyPersonalWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MyPersonal.Repo)
+    :ok = Sandbox.checkout(MyPersonal.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MyPersonal.Repo, {:shared, self()})
+      Sandbox.mode(MyPersonal.Repo, {:shared, self()})
     end
 
     :ok
