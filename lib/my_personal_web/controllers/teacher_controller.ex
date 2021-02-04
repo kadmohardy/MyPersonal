@@ -25,6 +25,7 @@ defmodule MyPersonalWeb.TeacherController do
         conn
         |> put_flash(:info, "Teacher created successfully.")
         |> redirect(to: Routes.teacher_path(conn, :show, teacher))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -34,7 +35,7 @@ defmodule MyPersonalWeb.TeacherController do
     teacher = Teachers.get_teacher!(id)
 
     case Teachers.update_teacher(teacher, teacher_params) do
-      {:ok,  teacher} ->
+      {:ok, teacher} ->
         conn
         |> put_flash(:info, "Teacher updated successfully.")
         |> redirect(to: Routes.teacher_path(conn, :show, teacher))
@@ -49,7 +50,7 @@ defmodule MyPersonalWeb.TeacherController do
     {:ok, _teacher} = Teachers.delete_teacher(teacher)
 
     conn
-      |> put_flash(:info, "Teacher deleted successfully.")
-      |> redirect(to: Routes.teacher_path(conn, :index))
+    |> put_flash(:info, "Teacher deleted successfully.")
+    |> redirect(to: Routes.teacher_path(conn, :index))
   end
 end
