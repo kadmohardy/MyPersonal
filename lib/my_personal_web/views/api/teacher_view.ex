@@ -1,13 +1,12 @@
-defmodule MyPersonalWeb.TeacherView do
+defmodule MyPersonalWeb.Api.TeacherView do
   use MyPersonalWeb, :view
-  alias MyPersonalWeb.TeacherView
 
   def render("index.json", %{teacher: teacher}) do
-    %{data: render_many(teacher, TeacherView, "teacher.json")}
+    %{data: render_many(teacher, __MODULE__, "teacher.json")}
   end
 
   def render("show.json", %{teacher: teacher}) do
-    %{data: render_one(teacher, TeacherView, "teacher.json")}
+    %{data: render_one(teacher, __MODULE__, "teacher.json")}
   end
 
   def render("teacher.json", %{teacher: teacher}) do
