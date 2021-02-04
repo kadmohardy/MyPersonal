@@ -17,7 +17,7 @@ defmodule MyPersonalWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/teacher/:id", TeacherController, :show
+    resources "/teacher", TeacherController
   end
 
   # Other scopes may use custom stacks.
