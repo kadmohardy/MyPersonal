@@ -19,6 +19,7 @@ defmodule MyPersonalWeb.Router do
     get "/", PageController, :index
     resources "/teacher", TeacherController
     resources "/members", MemberController
+    get "/search", TeacherController, :search
   end
 
   # Other scopes may use custom stacks.

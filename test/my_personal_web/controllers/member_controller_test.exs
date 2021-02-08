@@ -29,7 +29,7 @@ defmodule MyPersonalWeb.MemberControllerTest do
   describe "index" do
     test "lists all members", %{conn: conn} do
       conn = get(conn, Routes.member_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Members"
+      assert html_response(conn, 200) =~ "Membros"
     end
   end
 
@@ -48,7 +48,7 @@ defmodule MyPersonalWeb.MemberControllerTest do
       assert redirected_to(conn) == Routes.member_path(conn, :show, id)
 
       conn = get(conn, Routes.member_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Member"
+      assert html_response(conn, 200) =~ "Data de nascimento"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

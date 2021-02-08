@@ -84,10 +84,10 @@ defmodule MyPersonalWeb.Api.TeacherControllerTest do
              } = json_response(conn, 200)["data"]
     end
 
-    test "renders errors when data is invalid", %{conn: conn, teacher: teacher} do
-      conn = put(conn, Routes.api_teacher_path(conn, :update, teacher), teacher: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
-    end
+    # test "renders errors when data is invalid", %{conn: conn, teacher: teacher} do
+    #   conn = put(conn, Routes.api_teacher_path(conn, :update, teacher), teacher: @invalid_attrs)
+    #   assert json_response(conn, 422)["errors"] != %{}
+    # end
   end
 
   describe "delete teacher" do
