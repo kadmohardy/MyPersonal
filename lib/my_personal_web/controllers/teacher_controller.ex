@@ -19,6 +19,12 @@ defmodule MyPersonalWeb.TeacherController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  def edit(conn, %{"id" => id}) do
+    teacher = Teachers.get_teacher!(id)
+    changeset = Teachers.change_teacher(teacher)
+    render(conn, "edit.html", teacher: teacher, changeset: changeset)
+  end
+
   def create(conn, %{"teacher" => teacher_params}) do
     case Teachers.create_teacher(teacher_params) do
       {:ok, teacher} ->

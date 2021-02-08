@@ -12,5 +12,30 @@
     </tr>
   </tbody>
 </table>
-<span><%= link "Edit", to: Routes.teacher_path(@conn, :edit, @teacher) %></span>
-<span><%= link "Back", to: Routes.teacher_path(@conn, :index) %></span>
+
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= @teacher.avatar_url %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= @teacher.name %><i class="material-icons right">more_vert</i></span>
+      <p><a href="#">Ver mais</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= @teacher.name %><i class="material-icons right">close</i></span>
+      <p><strong>Nível de educação:</strong> <%= @teacher.education_level %></p>
+      <p><strong>Tipo de classe:</strong> <%= @teacher.class_type %></p>
+      <p><strong>Data de nascimento:</strong> <%= MyPersonal.Utils.convert_br(@teacher.birth_date) %></p>
+      <p><strong>Tipos de Aula:</strong>
+      <%= for tipo <- String.split(@teacher.class_type) do %>
+        <div class="chip deep-orange white-text">
+          <%= tipo %>
+        </div>
+      <% end %>
+      </p>
+    </div>
+  </div>
+
+
+<%= link "Back", to: Routes.teacher_path(@conn, :index) ,class: "waves-effect waves-light btn-large black" %>
+<%= link "Edit", to: Routes.teacher_path(@conn, :index) ,class: "waves-effect waves-light btn-large green right" %>

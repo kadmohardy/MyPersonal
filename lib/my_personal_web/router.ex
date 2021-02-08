@@ -18,12 +18,14 @@ defmodule MyPersonalWeb.Router do
 
     get "/", PageController, :index
     resources "/teacher", TeacherController
+    resources "/members", MemberController
   end
 
   # Other scopes may use custom stacks.
   scope "/api", MyPersonalWeb.Api, as: :api do
     pipe_through :api
 
+    resources "/members", MemberController
     resources "/teacher", TeacherController, except: [:new, :edit]
   end
 
