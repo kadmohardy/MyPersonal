@@ -9,8 +9,9 @@ defmodule MyPersonalWeb.TeacherController do
     render(conn, "index.html", teachers: teachers)
   end
 
-  def search(conn, _params) do
-    teachers = Teachers.list_teacher()
+  def search(conn, %{"filter" => filter}) do
+    IO.puts "testando 12313123123123123123131231312313123123"
+    teachers = Teachers.list_teacher(filter)
     render(conn, "index.html", teachers: teachers)
   end
 

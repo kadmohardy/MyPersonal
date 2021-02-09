@@ -35,6 +35,11 @@ defmodule MyPersonalWeb.TeacherControllerTest do
       conn = get(conn, Routes.teacher_path(conn, :index))
       assert html_response(conn, 200) =~ "Instrutores"
     end
+
+    test "lists all teacher using filter", %{conn: conn} do
+      conn = get(conn, Routes.teacher_path(conn, :search, %{"filter" => ""}))
+      assert html_response(conn, 200) =~ "Instrutores"
+    end
   end
 
   describe "new teacher" do

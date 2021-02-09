@@ -42,6 +42,11 @@ defmodule MyPersonal.TeachersTest do
       assert Teachers.list_teacher() == [teacher]
     end
 
+    test "list_teacher/1 using filters" do
+      teacher = teacher_fixture()
+      assert Teachers.list_teacher("sdasdasdadsasdad") == []
+    end
+
     test "get_teacher!/1 returns the teacher with given id" do
       teacher = teacher_fixture()
       assert Teachers.get_teacher!(teacher.id) == teacher
